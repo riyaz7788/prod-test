@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+     rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" 
+     crossorigin="anonymous">
+
+     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+     <script src="https://libs.zappar.com/zappar-aframe/2.0.0/zappar-aframe.js"></script>
+    <link rel="stylesheet" href= 
+    "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+    
+    <title>Milky Bar</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.0/dist/aframe-extras.min.js"></script>
+    <script src="https://unpkg.com/aframe-chromakey-material/dist/aframe-chromakey-material.min.js"></script>
+    <script src="gesture-detector.js"></script>
+    <script src="gesture-handler.js"></script>
+    <script src="https://libs.zappar.com/zappar-mobile-only/0.0.2/zappar-mobileonly.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+   integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" 
+   crossorigin="anonymous"></script>
+   <script>
+        if (!MobileOnly.isMobile()){
+  MobileOnly.showUI({
+    url : 'www.zappar.com'
+  });
+}
+    AFRAME.registerComponent("globe-click", {
+        init() {
+            console.log("start")
+            const africa = document.getElementById('africa')
+            const asia = document.getElementById('asia')
+            const europe = document.getElementById('europe')
+            const australia = document.getElementById('australia')
+            const antartica = document.getElementById('antartica')
+            const northamerica = document.getElementById('northamerica')
+            const southamerica = document.getElementById('southamerica')
+            // const asia = document.getElementById("asia")
+            // console.log(heartmod)
+           
+            africa.onclick = () => {
+                console.log("click1")
+                globe.setAttribute('visible',false)
+                asiacont.setAttribute('visible',true)
+            }
+            asia.onclick = () => {
+                console.log("click2")
+                globe.setAttribute('visible',false)
+                asiacont.setAttribute('visible',true)
+            }
+            europe.onclick = () => {
+                console.log("click3")
+                globe.setAttribute('visible',false)
+                asiacont.setAttribute('visible',true)
+            }
+            australia.onclick = () => {
+                console.log("click4")
+                globe.setAttribute('visible',false)
+                asiacont.setAttribute('visible',true)
+            }
+            antartica.onclick = () => {
+                console.log("click5")
+                globe.setAttribute('visible',false)
+                asiacont.setAttribute('visible',true)
+            }
+            northamerica.onclick = () => {
+                console.log("click6")
+                globe.setAttribute('visible',false)
+                asiacont.setAttribute('visible',true)
+            }
+            southamerica.onclick = () => {
+                console.log("click7")
+                globe.setAttribute('visible',false)
+                asiacont.setAttribute('visible',true)
+            }
+        }
+    })
+</script>
+<div id="arscene">
+  <div id="zappar-placement-ui">Tap here to place the object</div>
+  <a-scene gesture-detector globe-click>
+      <!-- Ask user for camera permissions, display some text if permission is denied -->
+      <a-entity zappar-permissions-ui id="permissions"></a-entity>
+      <!-- shows a full-page dialog that informs the user they're using an unsupported browser -->
+      <a-entity zappar-compatibility-ui id="compatibility"></a-entity>
+
+      <a-camera id="camera" position="0 8 8" raycaster="objects: .cantap" cursor="
+                fuse: false;
+                rayOrigin: mouse;" zappar-camera />
+
+               
+      <!-- Setup our instant tracker and start it in placement mode so the user can -->
+      <!-- choose a location for the object -->
+      <a-entity zappar-instant="placement-mode: true" id="instant-tracker">
+         
+          <a-entity id="asiacont" visible="false" class="cantap clickable" position="0 -2 0" gesture-handler="minScale: 0.25; maxScale: 10"  gltf-model="url(assets/Globemodels/asia land (2).glb)">
+          </a-entity>
+          <!-- Include a 3D model inside our instant tracker -->
+          <!-- <a-entity gesture-handler="minScale: 0.25; maxScale: 10" class="cantap clickable" id="main"> -->
+
+          <a-entity  id="globe"  class="cantap clickable" gesture-handler="minScale: 0.25; maxScale: 10"  gltf-model="url(assets/Globemodels/globe.glb)"
+              position="0 0 0" >
+              <a-entity id="africa" class="cantap clickable" gltf-model="url(assets/Globemodels/c1.glb)"></a-entity>
+              <a-entity id="asia" class="cantap clickable" gltf-model="url(assets/Globemodels/c2.glb)"></a-entity>
+              <a-entity id="europe" class="cantap clickable" gltf-model="url(assets/Globemodels/c3.glb)"></a-entity>
+  
+              <a-entity id="australia" class="cantap clickable" gltf-model="url(assets/Globemodels/c4.glb)"></a-entity>
+              <a-entity  id="antartica" class="cantap clickable" gltf-model="url(assets/Globemodels/c5.glb)"></a-entity>
+              <a-entity id="northamerica" class="cantap clickable" gltf-model="url(assets/Globemodels/c6.glb)"></a-entity>
+              <a-entity id="southamerica" class="cantap clickable" gltf-model="url(assets/Globemodels/c7.glb)"></a-entity>
+          </a-entity>
+      </a-entity>
+
+  </a-scene>
+
+  <script>
+      // Listen for when the user taps the UI
+      const placementUI = document.getElementById("zappar-placement-ui");
+      placementUI.addEventListener("click", function () {
+          // Set placement mode to false on our instant tracker
+          const instantTracker = document.getElementById("instant-tracker");
+          instantTracker.setAttribute("zappar-instant", "placement-mode: false");
+          // And remove the placement UI
+          placementUI.remove();
+      });
+  </script>
+  </div>
+  </body>
+</html>
